@@ -28,6 +28,13 @@ object CalculationSyntax {
     def |+(v2: A)(implicit c: Computation[A]) = c.compute(v1)(v2)
   }
 
+  implicit class Pow(v1: Int) {
+
+    import scala.math.pow
+
+    def **(v2: Int): Int = pow(v1, v2).toInt
+  }
+
 }
 
 object TypeClass2 {
@@ -37,6 +44,9 @@ object TypeClass2 {
 
     val x = 1 |+ 3
     println(x)
+
+    val y = 2 ** 4
+    println(y)
   }
 }
 
