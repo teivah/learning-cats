@@ -25,7 +25,7 @@ object ResultInstances {
 object CalculationSyntax {
 
   implicit class CalculationImpl[A](v1: A) {
-    def calculate2(v2: A)(implicit c: Computation[A]) = c.compute(v1)(v2)
+    def |+(v2: A)(implicit c: Computation[A]) = c.compute(v1)(v2)
   }
 
 }
@@ -35,10 +35,7 @@ object TypeClass2 {
     import CalculationSyntax._
     import ResultInstances._
 
-    val result = Result.calculate(1, 2)
-    println(result)
-
-    val x = 1 calculate2 3
+    val x = 1 |+ 3
     println(x)
   }
 }
